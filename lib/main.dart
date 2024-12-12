@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_tut/home_page.dart';
+import 'package:riverpod_tut/theme_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +12,7 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isLightTheme = ref.watch(isLightThemeProvider);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -23,7 +25,7 @@ class MyApp extends ConsumerWidget {
               seedColor: Colors.deepPurple, brightness: Brightness.dark),
           useMaterial3: true,
           brightness: Brightness.dark),
-      themeMode: ThemeMode.dark,
+      themeMode: isLightTheme ? ThemeMode.light : ThemeMode.dark,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
