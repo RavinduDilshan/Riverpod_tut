@@ -4,7 +4,7 @@ import 'package:riverpod_tut/home_page.dart';
 import 'package:riverpod_tut/theme_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends ConsumerWidget {
