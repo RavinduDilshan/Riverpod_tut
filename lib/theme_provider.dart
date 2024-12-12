@@ -7,4 +7,8 @@ class IsLightTheme extends _$IsLightTheme {
   bool build() {
     return true;
   }
+
+  void toggle() {
+    state = !state;
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_tut/theme_provider.dart';
 
 class MyHomePage extends ConsumerStatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -12,7 +13,6 @@ class MyHomePage extends ConsumerStatefulWidget {
 
 class _MyHomePageState extends ConsumerState<MyHomePage> {
   int _counter = 0;
-  bool _toggle = true;
 
   void _incrementCounter() {
     setState(() {
@@ -28,11 +28,9 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         title: Text(widget.title),
         actions: [
           Switch(
-              value: _toggle,
+              value: ref.watch(isLightThemeProvider),
               onChanged: (bool value) {
-                setState(() {
-                  _toggle = value;
-                });
+                ref.read(isLightThemeProvider.notifier).toggle();
               })
         ],
       ),
